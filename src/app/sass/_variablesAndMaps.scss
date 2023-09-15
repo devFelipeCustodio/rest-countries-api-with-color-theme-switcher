@@ -1,0 +1,35 @@
+@import '../sass/functions';
+
+$clr-primary-dark-300: hsl(209, 23%, 22%);
+$clr-primary-dark-400: hsl(207, 26%, 17%);
+$clr-primary-dark-800: hsl(200, 15%, 8%);
+
+$clr-primary-light-100: hsl(0, 0%, 100%);
+$clr-primary-light-150: hsl(0, 0%, 98%);
+$clr-primary-light-400: hsl(0, 0%, 52%);
+
+$spacing-1: 2rem;
+
+:root {
+    &.light {
+        --bg-color: #{$clr-primary-light-150};
+        --bg-accent-color: #{$clr-primary-light-100};
+        --text-opaque-color: #{$clr-primary-dark-800};
+        --text-faded-color: #{faded_color($clr-primary-dark-800)};
+        --shadow-color: #{shadow_color($clr-primary-light-400)};
+    }
+
+    &.dark {
+        --bg-color: #{$clr-primary-dark-400};
+        --bg-accent-color: #{$clr-primary-dark-300};
+        --text-opaque-color: #{$clr-primary-light-150};
+        --text-faded-color: #{$clr-primary-light-150};
+        --shadow-color: #{shadow_color($clr-primary-dark-800)};
+    }
+}
+
+$font-weights: (
+    'light': 300,
+    'bold': 600,
+    'extra-bold': 800,
+);

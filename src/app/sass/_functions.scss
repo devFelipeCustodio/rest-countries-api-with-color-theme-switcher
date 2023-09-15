@@ -1,0 +1,9 @@
+@use 'sass:color';
+
+@function shadow_color($c) {
+    @return color.scale($c, $alpha: -80%);
+}
+
+@function faded_color($c){
+    @return color.scale($c, $alpha: -50%);
+}

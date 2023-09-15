@@ -1,0 +1,33 @@
+@import '../sass/mixins';
+@import '../sass/variablesAndMaps';
+
+.searchbar_container {
+    $spacing: 4rem;
+    position: relative;
+    background-color: var(--bg-accent-color);
+    display: flex;
+    padding-inline: $spacing;
+    border-radius: 10px;
+    @include box_shadow;
+
+    svg {
+        align-self: center;
+        margin-right: $spacing;
+        fill: var(--text-faded-color);
+    }
+    input {
+        border: none;
+        font-size: 1.35rem;
+        flex-grow: 1;
+        color: var(--text-opaque-color);
+        padding-block: 2rem;
+
+        &::placeholder {
+            color: var(--text-faded-color);
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}

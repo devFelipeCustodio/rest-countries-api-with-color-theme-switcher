@@ -1,0 +1,42 @@
+@use 'sass:color';
+@import '../sass/variablesAndMaps';
+@import '../sass/mixins';
+
+
+.main_header {
+    background-color: var(--bg-accent-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10rem;
+    padding: 2rem $spacing-1;
+
+    @include box_shadow;
+
+    a {
+        cursor: pointer;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+        font-weight: map-get($font-weights, 'extra-bold');
+    }
+
+    img {
+        width: 28px;
+        aspect-ratio: 1;
+    }
+
+    button {
+        cursor: pointer;
+        display: flex;
+        font-weight: map-get($font-weights, 'bold');
+        gap: 0.7rem;
+        font-size: 1.5rem;
+
+        svg {
+            width: 28px;
+            aspect-ratio: 1;
+        }
+    }
+}
