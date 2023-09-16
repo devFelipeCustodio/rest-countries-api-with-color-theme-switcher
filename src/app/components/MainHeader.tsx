@@ -19,13 +19,28 @@ const MainHeader = () => {
 
     return (
         <header className={styles.main_header}>
-            <Link href={'/'}>
-                <h1>Where in the world?</h1>
-            </Link>
-            <button type='button' onClick={toggleTheme}>
-                {theme === 'dark' ? <Moon /> : <MoonFill />}
-                Dark Mode
-            </button>
+            <nav>
+                <Link href={'/'}>
+                    <h1>Where in the world?</h1>
+                </Link>
+                <button
+                    type="button"
+                    onClick={toggleTheme}
+                >
+                    {theme === 'dark' ? (
+                        <Moon
+                            width={14}
+                            height={14}
+                        />
+                    ) : (
+                        <MoonFill
+                            width={14}
+                            height={14}
+                        />
+                    )}
+                    Dark Mode
+                </button>
+            </nav>
         </header>
     );
 };

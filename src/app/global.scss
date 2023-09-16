@@ -4,7 +4,6 @@
     font-weight: map-get($font-weights, 'light');
     background-color: var(--bg-color);
     color: var(--text-opaque-color);
-    letter-spacing: 0.7px;
 }
 
 * {
@@ -31,12 +30,14 @@ button {
     color: inherit;
 }
 
+li {
+    list-style: none;
+}
+
 img,
 svg {
     display: block;
     max-width: 100%;
 }
 
-.container {
-    padding: 3rem $spacing-1;
-}
+

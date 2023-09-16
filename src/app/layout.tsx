@@ -30,7 +30,7 @@ export default function RootLayout({
             <body className={nunitoSans.className}>
                 <ThemeContextProvider>
                     <MainHeader />
-                    <div className='container'>{children}</div>
+                    <div>{children}</div>
                 </ThemeContextProvider>
             </body>
         </html>

@@ -1,10 +1,15 @@
 import styles from './SearchBar.module.scss';
-import Search from '../components/icons/Search'
+import Search from '../components/icons/Search';
 
 const SearchBar = () => {
     return (
         <div className={styles.searchbar_container}>
-            <Search width={28} height={28} />
+            <div className={styles.icon_container}>
+                <Search
+                    width={16}
+                    height={16}
+                />
+            </div>
             <input
                 aria-label="Country search"
                 type="text"
