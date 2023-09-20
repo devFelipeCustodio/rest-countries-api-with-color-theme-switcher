@@ -5,3 +5,9 @@
 @mixin border_radius {
     border-radius: 5px;
 }
+
+@mixin justify_between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

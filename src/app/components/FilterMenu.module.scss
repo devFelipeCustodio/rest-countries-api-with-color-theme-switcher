@@ -1,0 +1,59 @@
+@import '../sass/variablesAndMaps';
+@import '../sass/_mixins';
+
+@mixin hover_effect {
+    &:hover {
+        background-color: var(--bg-accent-color);
+    }
+}
+
+.menu_container {
+    $option-padding-inline: 1.5rem;
+    $list-item-padding: $spacing-1;
+    position: relative;
+    max-width: 13rem;
+
+    .btn {
+        font-weight: map-get($font-weights, 'bold');
+        min-width: 12.5rem;
+        padding-inline: $option-padding-inline;
+        padding-block: 1.1rem;
+        min-width: 100%;
+        font-size: 12px;
+        margin-top: $spacing-8;
+        cursor: pointer;
+        @include justify_between;
+        @include border_radius;
+        @include box_shadow;
+        @include hover_effect;
+    }
+
+    .filter_options {
+        content: '';
+        position: absolute;
+        top: calc(100% + 5px);
+        min-width: 100%;
+        background-color: var(--bg-color);
+        padding-block: $list-item-padding;
+        @include border_radius;
+        @include box_shadow;
+
+        li {
+            min-width: 100%;
+
+            .list_item_btn {
+                font-size: $fs-200;
+                font-weight: map-get($font-weights, 'bold');
+                padding-inline: $option-padding-inline;
+                padding-block: $list-item-padding / 3;
+                min-width: 100%;
+                text-align: left;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--bg-accent-color);
+                }
+            }
+        }
+    }
+}

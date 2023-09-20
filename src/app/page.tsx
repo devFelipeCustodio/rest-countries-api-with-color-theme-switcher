@@ -1,4 +1,4 @@
-import FilterDropdown from './components/FilterDropdown';
+import FilterMenu from './components/FilterMenu';
 import SearchBar from './components/SearchBar';
 import styles from './page.module.scss';
 
@@ -6,7 +6,7 @@ const Page = () => {
     return (
         <div className={styles.container}>
             <SearchBar />
-            <FilterDropdown />
+            <FilterMenu />
             <main></main>
         </div>
     );

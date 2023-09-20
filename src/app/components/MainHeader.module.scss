@@ -7,26 +7,25 @@
 
     nav {
         background-color: var(--bg-accent-color);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         min-height: 5rem;
         min-width: 100%;
+        @include justify_between;
 
         h1 {
             font-size: $fs-300;
             font-weight: map-get($font-weights, 'extra-bold');
         }
 
-        a, button {
-            padding: $spacing-sm;
+        a,
+        button {
+            padding: $spacing-3;
         }
 
         button {
             display: flex;
             font-size: $fs-200;
             font-weight: map-get($font-weights, 'bold');
-            gap: .5rem;
+            gap: 0.5rem;
             cursor: pointer;
         }
 
