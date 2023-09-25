@@ -1,0 +1,39 @@
+@import '../sass/variablesAndMaps';
+@import '../sass/mixins';
+
+.country_container {
+    background-color: var(--bg-accent-color);
+    overflow: hidden;
+    min-height: 21rem;
+    font-size: $fs-300;
+    @include box_shadow;
+    @include border_radius;
+
+    img {
+        object-fit: cover;
+        height: 10rem;
+        width: 100%;
+    }
+
+    .body {
+        margin-block: $spacing-7;
+        padding-inline: $spacing-6;
+
+        h2 {
+            font-size: $fs-450;
+            font-weight: map-get($font-weights, 'extra-bold');
+            line-height: 1;
+        }
+
+        .info {
+            margin-top: $spacing-5;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            span {
+                font-weight: map-get($font-weights, 'bold');
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@import '../sass/variablesAndMaps';
+@import '../sass/mixins';
+
+.Scroller {
+    min-width: 44px; 
+    padding: 10px;
+    aspect-ratio: 1;
+    border-radius: 100vw;
+    background-color: var(--bg-accent-color);
+    position: fixed;
+    bottom: $spacing-7;
+    right: $spacing-1;
+    cursor: pointer;
+    @include box_shadow;
+
+    &:hover {
+        background-color: var(--bg-color);
+    }
+
+    &:active {
+        appearance: none;
+    }
+}

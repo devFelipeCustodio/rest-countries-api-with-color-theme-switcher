@@ -4,6 +4,7 @@
     font-weight: map-get($font-weights, 'light');
     background-color: var(--bg-color);
     color: var(--text-opaque-color);
+    -webkit-font-smoothing: antialiased;
 }
 
 * {
@@ -39,5 +40,3 @@ svg {
     display: block;
     max-width: 100%;
 }
-
-

@@ -10,7 +10,7 @@ function assertIsNode(e: EventTarget | null): asserts e is Node {
 
 function useOnClickOutside(ref: RefObject<HTMLElement>, handleClick: Function) {
     const listenner = (e: Event) => {
-        assertIsNode(e.target)
+        assertIsNode(e.target);
         if (ref.current && !ref.current.contains(e.target)) {
             handleClick(e);
         }

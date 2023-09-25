@@ -19,9 +19,11 @@ $spacing-8: 2rem; // 32px
 $spacing-9: 3rem; // 48px
 $spacing-10: 4rem; // 64px
 
-$fs-200: 0.75rem; // 12px
+$fs-200: 0.8125rem; // 13px
 $fs-300: 0.875rem; // 14px
+$fs-350: 0.9375rem; // 15px
 $fs-400: 1rem; // 16px
+$fs-450: 1.0625rem; // 16px
 $fs-500: 1.125rem; // 18px
 
 .light {
@@ -31,6 +33,10 @@ $fs-500: 1.125rem; // 18px
     --text-faded-color: #{color.scale($clr-primary-dark-800, $alpha: -80%)};
     --icon-faded-color: #{color.scale($clr-primary-dark-800, $alpha: -50%)};
     --shadow-color: #{color.scale($clr-primary-light-400, $alpha: -80%)};
+
+    [data-hide-on-theme='dark'] {
+        display: none;
+    }
 }
 
 .dark {
@@ -40,6 +46,10 @@ $fs-500: 1.125rem; // 18px
     --text-faded-color: #{$clr-primary-light-150};
     --icon-faded-color: #{$clr-primary-light-150};
     --shadow-color: #{color.scale($clr-primary-dark-800, $alpha: -80%)};
+
+    [data-hide-on-theme='light'] {
+        display: none;
+    }
 }
 
 $font-weights: (

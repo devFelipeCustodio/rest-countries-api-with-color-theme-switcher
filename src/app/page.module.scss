@@ -1,5 +1,7 @@
 @import './sass/variablesAndMaps';
 
 .container {
-    margin: $spacing-3;
+    margin-inline: $spacing-3;
+    margin-block: $spacing-8 $spacing-10;
+    position: relative;
 }

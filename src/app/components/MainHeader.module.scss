@@ -11,14 +11,15 @@
         min-width: 100%;
         @include justify_between;
 
-        h1 {
-            font-size: $fs-300;
-            font-weight: map-get($font-weights, 'extra-bold');
-        }
-
-        a,
+        h1,
         button {
             padding: $spacing-3;
+        }
+
+        h1 {
+            font-size: $fs-300;
+            letter-spacing: 0.1px;
+            font-weight: map-get($font-weights, 'extra-bold');
         }
 
         button {
@@ -27,6 +28,7 @@
             font-weight: map-get($font-weights, 'bold');
             gap: 0.5rem;
             cursor: pointer;
+            text-align: right;
         }
 
         svg {
