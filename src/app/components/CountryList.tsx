@@ -2,7 +2,14 @@ import Country, { CountryProps } from './Country';
 import styles from './CountryList.module.scss';
 import LoadMoreButton from './LoadMoreButton';
 
-const CountryList = ({ countries }: { countries: Array<CountryProps> }) => {
+const CountryList = ({
+    countries,
+    remaining,
+}: {
+    countries: Array<CountryProps>;
+    remaining: number;
+    }) => {
+    
     return (
         <>
             <div className={styles.countries_container}>
@@ -13,7 +20,7 @@ const CountryList = ({ countries }: { countries: Array<CountryProps> }) => {
                     />
                 ))}
             </div>
-            <LoadMoreButton/>
+            {remaining > 0 && <LoadMoreButton />}
         </>
     );
 };

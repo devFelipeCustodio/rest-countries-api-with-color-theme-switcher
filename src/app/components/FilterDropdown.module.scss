@@ -14,19 +14,10 @@
     max-width: 12rem;
 
     @mixin filter_btn {
-        font-weight: map-get($font-weights, 'bold');
-        min-width: 12.5rem;
         padding-inline: $option-padding-inline;
-        padding-block: 1.1rem;
         min-width: 100%;
-        font-size: $fs-200;
-        margin-top: $spacing-8;
-        cursor: pointer;
-        background-color: var(--bg-accent-color);
 
-        @include justify_between;
-        @include border_radius;
-        @include box_shadow;
+        @include primary_button;
         @include hover_effect;
     }
 

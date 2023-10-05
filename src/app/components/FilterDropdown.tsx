@@ -1,19 +1,18 @@
-'use client';
-
 import { useEffect, useRef, useState } from 'react';
 import styles from './FilterDropdown.module.scss';
 import ChevronDown from './icons/ChevronDown';
 import useOnClickOutside from '../hooks/useOnClickOutside';
-import useActionsContext from '../hooks/useActionsContext';
+import useFilterContext from '../hooks/useFilterContext';
+import { CountryLimitActionKind } from '../context/FilterContext';
 
 const FilterMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
     const filters = ['africa', 'americas', 'asia', 'europe', 'oceania'];
     const menuBtnRef = useRef<HTMLButtonElement>(null);
-    const { region, setRegion, setMaxCountries } = useActionsContext();
+    const { region, setRegion, setCountriesLimit } = useFilterContext();
     const handleChange = (selectedRegion: string | null) => {
         setRegion(selectedRegion);
-        setMaxCountries(15); // TODO CRIAR UM REDUCER
+        setCountriesLimit({ type: CountryLimitActionKind.RESET });
     };
 
     useOnClickOutside(menuBtnRef, () => {
@@ -28,6 +27,8 @@ const FilterMenu = () => {
         <div className={styles.menu_container}>
             {!region && (
                 <button
+                    id="filter-dropdown-btn"
+                    aria-expanded={isOpen}
                     type="button"
                     ref={menuBtnRef}
                     className={styles.btn}
@@ -57,7 +58,7 @@ const FilterMenu = () => {
 
             {isOpen && (
                 <div className={styles.filter_options}>
-                    <ul>
+                    <ul aria-labelledby="filter-dropdown-btn">
                         <li>
                             <label>
                                 <input

@@ -1,3 +1,5 @@
+@import './variablesAndMaps';
+
 @mixin box_shadow {
     box-shadow: 0 1px 10px 0 var(--shadow-color);
 }
@@ -10,4 +12,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@mixin primary_box {
+    font-size: $fs-200;
+    margin-top: $spacing-8;
+    background-color: var(--bg-accent-color);
+    padding-block: 1.1rem;
+    font-weight: map-get($font-weights, 'bold');
+
+    @include border_radius;
+    @include box_shadow;
+}
+
+@mixin primary_button {
+    cursor: pointer;
+    @include primary_box;
+    @include justify_between;
 }

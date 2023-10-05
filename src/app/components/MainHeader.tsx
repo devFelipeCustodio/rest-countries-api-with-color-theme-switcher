@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import styles from './MainHeader.module.scss';
 import Moon from './icons/Moon';
 import MoonFill from './icons/MoonFill';
@@ -29,7 +28,7 @@ const MainHeader = () => {
                         width={14}
                         height={14}
                     />
-                    Dark Mode
+                    Light Mode
                 </button>
                 <button
                     type="button"

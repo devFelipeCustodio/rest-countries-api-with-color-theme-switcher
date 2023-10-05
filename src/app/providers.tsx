@@ -1,11 +1,16 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
-import ActionsContextProvider from './context/ActionsContext';
+import FilterContextProvider from './context/FilterContext';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 export function Providers({ children }: React.PropsWithChildren) {
     return (
-        <ActionsContextProvider>
-            <ThemeProvider attribute="class">{children}</ThemeProvider>
-        </ActionsContextProvider>
+        <QueryClientProvider client={queryClient}>
+            <FilterContextProvider>
+                <ThemeProvider attribute="class">{children}</ThemeProvider>
+            </FilterContextProvider>
+        </QueryClientProvider>
     );
 }

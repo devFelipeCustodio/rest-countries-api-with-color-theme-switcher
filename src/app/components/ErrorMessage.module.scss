@@ -1,0 +1,9 @@
+@import '../sass/variablesAndMaps';
+@import '../sass/mixins';
+
+.message_text {
+    @include primary_box;
+    text-align: center;
+    display: block;
+
+}
