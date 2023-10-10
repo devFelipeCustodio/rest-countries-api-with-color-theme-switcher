@@ -1,0 +1,26 @@
+@import '../sass/variablesAndMaps';
+@import '../sass/_mixins';
+
+.list_box {
+    background-color: var(--bg-accent-color);
+    min-width: 13rem;
+    max-width: 13rem;
+    margin-top: 5px;
+    font-size: $fs-200;
+    font-weight: map-get($font-weights, 'bold');
+    overflow: hidden;
+
+    @include border_radius;
+    @include box_shadow;
+
+    li {
+        text-transform: capitalize;
+        padding-inline: 1.5rem;
+        padding-block: $spacing-3 / 2;
+
+        &:hover {
+            background-color: var(--bg-color);
+            cursor: pointer;
+        }
+    }
+}

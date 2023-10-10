@@ -8,7 +8,7 @@
     nav {
         background-color: var(--bg-accent-color);
         min-height: 5rem;
-        min-width: 100%;
+
         @include justify_between;
 
         h1,

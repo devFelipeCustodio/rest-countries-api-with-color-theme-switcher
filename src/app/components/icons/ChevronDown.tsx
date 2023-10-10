@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-const ArrowDownShort = (props: SVGProps<SVGSVGElement>) => (
+const ChevronDown = (props: SVGProps<SVGSVGElement>) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -13,4 +13,4 @@ const ArrowDownShort = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 );
-export default ArrowDownShort;
+export default ChevronDown;

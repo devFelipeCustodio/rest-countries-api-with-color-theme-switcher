@@ -1,27 +1,22 @@
-import { useEffect, useRef, useTransition } from 'react';
+import { useEffect, useRef } from 'react';
 import Search from '../components/icons/Search';
 import { CountryLimitActionKind } from '../context/FilterContext';
 import useFilterContext from '../hooks/useFilterContext';
 import styles from './SearchBar.module.scss';
-import { useSearchParams } from 'next/navigation';
+import {  useDebouncedCallback } from 'use-debounce';
 
 const SearchBar = () => {
     const { query, setQuery, setCountriesLimit } = useFilterContext();
-    const [isPending, startTransition] = useTransition();
     const inputRef = useRef<HTMLInputElement>(null);
-    const searchParams = useSearchParams();
-    const queryFromParam = searchParams.get('q');
 
-    const handleInput = (value: string | null) => {
-        startTransition(() => {
-            setQuery(value);
-            setCountriesLimit({ type: CountryLimitActionKind.RESET });
-        });
-    };
+    const debounced = useDebouncedCallback((value: string | null) => {
+        setQuery(value);
+        setCountriesLimit({ type: CountryLimitActionKind.RESET });
+    }, 800);
 
     useEffect(() => {
-        if (inputRef.current && queryFromParam) {
-            inputRef.current.value = queryFromParam;
+        if (inputRef.current && query) {
+            inputRef.current.value = query;
         }
     }, []);
 
@@ -39,8 +34,8 @@ const SearchBar = () => {
                 type="text"
                 placeholder="Search for a country..."
                 name="query"
-                onInput={(e) => handleInput(e.currentTarget.value)}
-                autoComplete='no'
+                onInput={(e) => debounced(e.currentTarget.value)}
+                autoComplete="no"
             />
         </div>
     );

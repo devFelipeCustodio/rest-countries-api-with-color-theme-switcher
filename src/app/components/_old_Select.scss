@@ -30,12 +30,11 @@
         @include filter_btn;
     }
 
-    .filter_options {
+    .filter_container {
         content: '';
         position: absolute;
         top: calc(100% + 5px);
         min-width: 100%;
-        background-color: var(--bg-color);
         padding-block: $list-item-padding;
         background-color: var(--bg-accent-color);
         @include border_radius;
@@ -43,12 +42,6 @@
 
         li {
             display: flex;
-            .list_item {
-                appearance: none;
-                position: absolute;
-                inset: 0;
-                cursor: pointer;
-            }
 
             label {
                 position: relative;
@@ -56,11 +49,24 @@
                 font-weight: map-get($font-weights, 'bold');
                 padding-inline: $option-padding-inline;
                 padding-block: $list-item-padding / 3;
-                flex-grow: 1;
                 text-transform: capitalize;
+                flex-grow: 1;
+                z-index: 2;
 
                 &:hover {
-                    background-color: var(--bg-color);
+                    cursor: pointer;
+                }
+
+                input {
+                    position: absolute;
+                    inset: 0;
+                    appearance: none;
+                    z-index: -1;
+
+                    &:hover {
+                        background-color: var(--bg-color);
+                        cursor: pointer;
+                    }
                 }
             }
         }

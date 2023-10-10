@@ -1,0 +1,16 @@
+@import '../sass/variablesAndMaps';
+@import '../sass/_mixins';
+
+.btn {
+    padding-inline: 1.5rem;
+    min-width: 13rem;
+    max-width: 13rem;
+    display: flex;
+    gap: 1rem;
+    text-transform: capitalize;
+    @include primary_button;
+
+    &:hover {
+        background-color: var(--bg-color);
+    }
+}

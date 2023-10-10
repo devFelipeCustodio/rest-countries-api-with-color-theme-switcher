@@ -5,21 +5,15 @@ import ScrollerButton from '../components/ScrollerButton';
 import CountryList from '../components/CountryList';
 import ActionsForm from '../components/ActionsForm';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useFilterContext from '../hooks/useFilterContext';
 import useCountries from '../hooks/useCountries';
 import ErrorMessage from '../components/ErrorMessage';
 import { CountryLimitActionKind } from '../context/FilterContext';
 
 const Page = () => {
-    const {
-        query,
-        setQuery,
-        region,
-        setRegion,
-        countriesLimit,
-        setCountriesLimit,
-    } = useFilterContext();
+    const { setQuery, setRegion, countriesLimit, setCountriesLimit } =
+        useFilterContext();
     const { countries, isLoading } = useCountries();
     const searchParams = useSearchParams();
     const queryFromParam = searchParams.get('q');

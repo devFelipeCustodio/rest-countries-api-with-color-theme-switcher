@@ -39,6 +39,9 @@ function useCountries(_query?: string) {
             }
             return res.json() as Promise<CountryProps[]>;
         },
+        retry: false,
+        refetchOnWindowFocus: false,
+        cacheTime: 0
     });
 
     useEffect(() => {

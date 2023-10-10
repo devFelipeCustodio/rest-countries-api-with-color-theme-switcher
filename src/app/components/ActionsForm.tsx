@@ -1,13 +1,18 @@
 import { FormEvent, useEffect } from 'react';
-import FilterMenu from './FilterDropdown';
+import Select from './Select';
 import SearchBar from './SearchBar';
 import useFilterContext from '../hooks/useFilterContext';
 import { usePathname, useRouter } from 'next/navigation';
+import { Item } from 'react-stately';
+import { CountryLimitActionKind } from '../context/FilterContext';
 
 const ActionsForm = () => {
     const router = useRouter();
     const pathname = usePathname();
-    const { region, query, countriesLimit } = useFilterContext();
+
+    const filters = ['all', 'africa', 'americas', 'asia', 'europe', 'oceania'];
+    const { region, query, countriesLimit, setCountriesLimit } =
+        useFilterContext();
 
     const setSearchParams = () => {
         const searchParams = new URLSearchParams();
@@ -41,7 +46,17 @@ const ActionsForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <SearchBar />
-            <FilterMenu />
+            <Select
+                
+                onSelectionChange={() =>
+                    setCountriesLimit({ type: CountryLimitActionKind.RESET })
+                }
+                aria-label="Filter by Region"
+            >
+                {filters.map((region, i) => (
+                    <Item key={i}>{region}</Item>
+                ))}
+            </Select>
         </form>
     );
 };
