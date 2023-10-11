@@ -1,6 +1,6 @@
 import Country, { CountryProps } from './Country';
 import styles from './CountryList.module.scss';
-import LoadMoreButton from './LoadMoreButton';
+import LoadMoreButton from './ShowMoreButton';
 
 const CountryList = ({
     countries,
@@ -8,8 +8,7 @@ const CountryList = ({
 }: {
     countries: Array<CountryProps>;
     remaining: number;
-    }) => {
-    
+}) => {
     return (
         <>
             <div className={styles.countries_container}>

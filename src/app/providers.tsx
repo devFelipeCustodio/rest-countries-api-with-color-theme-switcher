@@ -1,7 +1,8 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
 import FilterContextProvider from './context/FilterContext';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient();
 
@@ -11,6 +12,7 @@ export function Providers({ children }: React.PropsWithChildren) {
             <FilterContextProvider>
                 <ThemeProvider attribute="class">{children}</ThemeProvider>
             </FilterContextProvider>
+            <ReactQueryDevtools />
         </QueryClientProvider>
     );
 }

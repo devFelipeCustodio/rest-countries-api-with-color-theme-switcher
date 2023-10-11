@@ -1,10 +1,11 @@
 import { FormEvent, useEffect } from 'react';
-import Select from './Select';
+import Select from './Select/Select';
 import SearchBar from './SearchBar';
 import useFilterContext from '../hooks/useFilterContext';
 import { usePathname, useRouter } from 'next/navigation';
 import { Item } from 'react-stately';
 import { CountryLimitActionKind } from '../context/FilterContext';
+import SearchField from './SearchField';
 
 const ActionsForm = () => {
     const router = useRouter();
@@ -45,16 +46,17 @@ const ActionsForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <SearchBar />
+            <SearchField aria-label="Country search" />
             <Select
-                
                 onSelectionChange={() =>
                     setCountriesLimit({ type: CountryLimitActionKind.RESET })
                 }
                 aria-label="Filter by Region"
             >
                 {filters.map((region, i) => (
-                    <Item key={i}>{region}</Item>
+                    <Item key={i}>
+                        {region[0].toUpperCase() + region.slice(1)}
+                    </Item>
                 ))}
             </Select>
         </form>

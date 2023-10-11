@@ -1,0 +1,61 @@
+@import '../sass/mixins';
+@import '../sass/variablesAndMaps';
+
+.searchbar_container {
+    $height: 1.8rem;
+    $icon_container_width: 2.3rem;
+    $clear_button_width: 2rem;
+    background-color: var(--bg-accent-color);
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    @include box_shadow;
+    @include border_radius;
+
+    svg {
+        fill: var(--icon-faded-color);
+    }
+
+    .icon_container {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        width: $icon_container_width * 2;
+        z-index: -1;
+        @include vertical_center;
+    }
+
+    input {
+        font-weight: map-get($font-weights, 'bold');
+        flex-grow: 1;
+        color: var(--text-opaque-color);
+        padding-left: $icon_container_width * 2;
+        padding-right: $clear_button_width * 2;
+        padding-block: $height / 2;
+
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-decoration {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        &::placeholder {
+            color: var(--text-faded-color);
+            font-size: $fs-200;
+            font-weight: map-get($font-weights, 'bold');
+        }
+
+        &:focus-visible {
+            z-index: 1;
+        }
+    }
+
+    button {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        padding-inline: $clear_button_width / 2;
+        min-height: 100%;
+        @include vertical_center;
+    }
+}

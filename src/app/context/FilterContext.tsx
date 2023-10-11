@@ -68,7 +68,6 @@ export default function FilterContextProvider({
     const searchParams = useSearchParams();
     const queryFromParam = searchParams.get('q');
     const regionFromParam = searchParams.get('region');
-    
     const maxFromParam = searchParams.get('max');
     const [query, setQuery] = useState<null | string>(queryFromParam);
     const [region, setRegion] = useState<null | string>(regionFromParam);

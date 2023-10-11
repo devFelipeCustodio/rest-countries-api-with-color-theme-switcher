@@ -1,8 +1,8 @@
 import { AriaListBoxOptions, useListBox, useOption } from '@react-aria/listbox';
 import { useRef } from 'react';
 import { ListState, Node } from 'react-stately';
-import { CountryProps } from './Country';
-import styles from '../components/ListBox.module.scss'
+import { CountryProps } from '../Country';
+import styles from './ListBox.module.scss';
 
 function ListBox(
     props: AriaListBoxOptions<HTMLUListElement> & {
@@ -15,7 +15,8 @@ function ListBox(
     let { listBoxProps } = useListBox(props, state, listBoxRef);
 
     return (
-        <ul className={styles.list_box}
+        <ul
+            className={styles.list_box}
             {...listBoxProps}
             ref={listBoxRef}
         >

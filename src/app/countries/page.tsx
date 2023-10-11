@@ -4,31 +4,18 @@ import styles from './page.module.scss';
 import ScrollerButton from '../components/ScrollerButton';
 import CountryList from '../components/CountryList';
 import ActionsForm from '../components/ActionsForm';
-import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
 import useFilterContext from '../hooks/useFilterContext';
 import useCountries from '../hooks/useCountries';
 import ErrorMessage from '../components/ErrorMessage';
-import { CountryLimitActionKind } from '../context/FilterContext';
+import { useEffect } from 'react';
 
 const Page = () => {
-    const { setQuery, setRegion, countriesLimit, setCountriesLimit } =
-        useFilterContext();
-    const { countries, isLoading } = useCountries();
-    const searchParams = useSearchParams();
-    const queryFromParam = searchParams.get('q');
-    const regionFromParam = searchParams.get('region');
-    const maxFromParam = searchParams.get('max');
+    const { query, countriesLimit, region } = useFilterContext();
+    const { countries, error } = useCountries();
 
     useEffect(() => {
-        if (queryFromParam) setQuery(queryFromParam);
-        if (regionFromParam) setRegion(regionFromParam);
-        if (maxFromParam)
-            setCountriesLimit({
-                type: CountryLimitActionKind.INCREASE,
-                payload: maxFromParam,
-            });
-    }, []);
+        console.log(countries);
+    }, [countries]);
 
     return (
         <div className={styles.container}>
@@ -40,11 +27,15 @@ const Page = () => {
                         countries={countries.entries}
                     />
                 )}
-                {!countries ||
-                    (countries.total === 0 && (
+                {(countries?.total === 0 || error) &&
+                    (region ? (
                         <ErrorMessage
-                            message={`No matches for "${queryFromParam}".`}
+                            message={`No matches for "${query}" in region "${
+                                region[0].toUpperCase() + region.slice(1)
+                            }".`}
                         />
+                    ) : (
+                        <ErrorMessage message={`No matches for "${query}".`} />
                     ))}
             </main>
             <ScrollerButton />

@@ -1,5 +1,5 @@
 import { PropsWithChildren, useEffect, useRef } from 'react';
-import useFilterContext from '../hooks/useFilterContext';
+import useFilterContext from '../../hooks/useFilterContext';
 import { SelectStateOptions, useSelectState } from 'react-stately';
 import {
     HiddenSelect,
@@ -9,8 +9,8 @@ import {
 import Button from './Button';
 import Popover from './Popover';
 import ListBox from './ListBox';
-import ChevronDown from './icons/ChevronDown';
-import { CountryLimitActionKind } from '../context/FilterContext';
+import ChevronDown from '../icons/ChevronDown';
+import { CountryLimitActionKind } from '../../context/FilterContext';
 
 const Select = (
     props: PropsWithChildren &
@@ -38,7 +38,7 @@ const Select = (
     }, [state]);
 
     return (
-        <div style={{ display: 'inline-block' }}>
+        <div>
             <div {...labelProps}>{props.label}</div>
             <HiddenSelect
                 isDisabled={props.isDisabled}
@@ -70,8 +70,8 @@ const Select = (
                     placement="bottom start"
                 >
                     <ListBox
-                        listBoxRef={listBoxRef}
                         {...menuProps}
+                        listBoxRef={listBoxRef}
                         state={state}
                     />
                 </Popover>

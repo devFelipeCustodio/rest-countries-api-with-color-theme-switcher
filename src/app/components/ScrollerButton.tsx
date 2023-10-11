@@ -13,11 +13,14 @@ const ScrollerButton = () => {
     return (
         <>
             {hasScrolledPast && (
-                <button type='button'
+                <button
+                    type="button"
                     onClick={handleClick}
+                    onTouchEnd={handleClick}
                     className={styles.Scroller}
+                    aria-label="Scroll to the top"
                 >
-                    <ArrowUp />
+                    <ArrowUp aria-hidden />
                 </button>
             )}
         </>

@@ -1,0 +1,11 @@
+@import '../../sass/variablesAndMaps';
+@import '../../sass/_mixins';
+
+.btn {
+    padding-inline: 1.5rem;
+    min-width: 13rem;
+    max-width: 13rem;
+    display: flex;
+    gap: 1rem;
+    @include primary_button;
+}

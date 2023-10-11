@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import './variablesAndMaps';
 
 @mixin box_shadow {
@@ -29,4 +30,18 @@
     cursor: pointer;
     @include primary_box;
     @include justify_between;
+
+    &:hover {
+        background-color: var(--bg-color);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@mixin vertical_center {
+    top: 50%;
+    transform: translateY(-50%);
 }

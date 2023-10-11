@@ -1,6 +1,6 @@
 import { useEffect, useState, useTransition } from 'react';
 import { CountryProps } from '../components/Country';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import useFilterContext from './useFilterContext';
 
 type TCountries = {
@@ -8,7 +8,7 @@ type TCountries = {
     total: number;
 };
 
-function useCountries(_query?: string) {
+function useCountries() {
     const { region, query, setQuery, countriesLimit, setCountriesLimit } =
         useFilterContext();
     const [countries, setCountries] = useState<null | TCountries>(null);
@@ -22,33 +22,31 @@ function useCountries(_query?: string) {
         queryKey: ['countries', query, region, countriesLimit],
         queryFn: async () => {
             let url: string;
-            if (!_query && !query && !region) {
+            if (!query && !region) {
                 url = `${process.env.NEXT_PUBLIC_API_URL}/all/?${params}`;
             } else if (!query && region) {
                 url = `${process.env.NEXT_PUBLIC_API_URL}/region/${region}/?${params}`;
             } else {
                 url = `${process.env.NEXT_PUBLIC_API_URL}/name/${query}?${params}`;
             }
-            const res = await fetch(url);
+
+            const res = await fetch(url, { cache: 'no-cache' });
             if (!res.ok || res.status === 404) {
                 queryClient.invalidateQueries({
                     queryKey: ['countries'],
                 });
-                setCountries(null);
                 throw Error('Api error');
             }
             return res.json() as Promise<CountryProps[]>;
         },
+        onError: (err: Error) => {
+            setCountries(null);
+            return err;
+        },
         retry: false,
         refetchOnWindowFocus: false,
-        cacheTime: 0
+        cacheTime: 0,
     });
-
-    useEffect(() => {
-        if (_query) {
-            setQuery(_query);
-        }
-    }, []);
 
     useEffect(() => {
         if (!data) return;
