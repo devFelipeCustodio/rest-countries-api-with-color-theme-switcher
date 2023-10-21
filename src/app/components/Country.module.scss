@@ -6,9 +6,15 @@
     overflow: hidden;
     min-height: 21rem;
     font-size: $fs-300;
+    position: relative;
+    transition: scale .25s ease-out;
 
     @include box_shadow;
     @include border_radius;
+
+    &:hover {
+        scale: 1.1;
+    }
 
     img {
         object-fit: cover;
@@ -20,10 +26,17 @@
         margin-block: $spacing-7;
         padding-inline: $spacing-6;
 
-        h2 {
+        a {
             font-size: $fs-450;
             font-weight: map-get($font-weights, 'extra-bold');
             line-height: 1;
+
+            &::before {
+                position: absolute;
+                content: '';
+                inset: 0;
+                z-index: 1;
+            }
         }
 
         .info {

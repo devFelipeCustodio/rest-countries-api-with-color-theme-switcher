@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import styles from './Country.module.scss';
+import { usePathname } from 'next/navigation';
 
 export type CountryProps = {
     name: { common: string };
@@ -6,6 +8,7 @@ export type CountryProps = {
     population: number;
     region: string;
     capital: string[];
+    cca3: string;
 };
 
 const Country = ({
@@ -14,17 +17,17 @@ const Country = ({
     population,
     region,
     capital,
+    cca3,
 }: CountryProps) => {
+    const pathname = usePathname();
     return (
-        <div
-            className={styles.country_container}
-        >
+        <div className={styles.country_container}>
             <img
                 src={flags.svg}
                 alt={`${name.common}'s flag`}
             />
             <div className={styles.body}>
-                <h2>{name.common}</h2>
+                <Link href={`${pathname}/${cca3.toLowerCase()}`}>{name.common}</Link>
                 <div className={styles.info}>
                     {population !== null && population !== undefined && (
                         <p>

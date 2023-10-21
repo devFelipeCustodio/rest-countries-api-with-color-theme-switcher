@@ -3,7 +3,6 @@ import { Nunito_Sans } from 'next/font/google';
 
 import './global.scss';
 
-import MainHeader from './components/MainHeader';
 import { Providers } from './providers';
 
 const nunitoSans = Nunito_Sans({ subsets: ['latin'], weight: 'variable' });
@@ -20,7 +19,6 @@ export default function RootLayout({
         <html lang="en">
             <body className={nunitoSans.className}>
                 <Providers>
-                    <MainHeader />
                     {children}
                 </Providers>
             </body>

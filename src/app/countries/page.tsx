@@ -7,25 +7,36 @@ import ActionsForm from '../components/ActionsForm';
 import useFilterContext from '../hooks/useFilterContext';
 import useCountries from '../hooks/useCountries';
 import ErrorMessage from '../components/ErrorMessage';
-import { useEffect } from 'react';
+import CountrySkeleton from '../components/CountrySkeleton';
 
 const Page = () => {
     const { query, countriesLimit, region } = useFilterContext();
-    const { countries, error } = useCountries();
-
-    useEffect(() => {
-        console.log(countries);
-    }, [countries]);
+    const { countries, error, isLoading } = useCountries();
 
     return (
         <div className={styles.container}>
             <ActionsForm />
             <main>
-                {countries && countries.total > 0 && countriesLimit && (
-                    <CountryList
-                        remaining={countries.total - countriesLimit.value}
-                        countries={countries.entries}
-                    />
+                {isLoading && !countries ? (
+                    <>
+                        <CountryList remaining={0}>
+                            <CountrySkeleton />
+                            <CountrySkeleton />
+                            <CountrySkeleton />
+                            <CountrySkeleton />
+                            <CountrySkeleton />
+                            <CountrySkeleton />
+                        </CountryList>
+                    </>
+                ) : (
+                    countries &&
+                    countries.total > 0 &&
+                    countriesLimit && (
+                        <CountryList
+                            remaining={countries.total - countriesLimit.value}
+                            countries={countries.entries}
+                        />
+                    )
                 )}
                 {(countries?.total === 0 || error) &&
                     (region ? (

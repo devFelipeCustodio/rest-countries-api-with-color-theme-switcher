@@ -1,6 +1,5 @@
 import { FormEvent, useEffect } from 'react';
 import Select from './Select/Select';
-import SearchBar from './SearchBar';
 import useFilterContext from '../hooks/useFilterContext';
 import { usePathname, useRouter } from 'next/navigation';
 import { Item } from 'react-stately';

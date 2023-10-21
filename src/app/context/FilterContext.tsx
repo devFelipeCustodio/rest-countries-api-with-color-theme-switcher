@@ -70,7 +70,9 @@ export default function FilterContextProvider({
     const regionFromParam = searchParams.get('region');
     const maxFromParam = searchParams.get('max');
     const [query, setQuery] = useState<null | string>(queryFromParam);
-    const [region, setRegion] = useState<null | string>(regionFromParam);
+    const [region, setRegion] = useState<null | string>(
+        regionFromParam ? regionFromParam[0] + regionFromParam.slice(1) : null
+    );
     const [countriesLimit, setCountriesLimit] = useReducer(
         countryLimitReducer,
         { value: maxFromParam ? parseInt(maxFromParam) : 15, default: 15 }

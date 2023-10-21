@@ -16,7 +16,7 @@ export const ShowMoreButton = () => {
             onClick={handleClick}
             disabled={isLoading}
         >
-            Show more
+            {isLoading ? 'Loading...' : 'Show more'}
         </button>
     );
 };

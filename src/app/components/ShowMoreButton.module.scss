@@ -2,6 +2,10 @@
 
 .load_more_btn {
     @include primary_button;
-    padding-inline:3rem;
+    padding-inline: 3rem;
     margin-inline: auto;
+
+    &:disabled {
+        cursor: default;
+    }
 }

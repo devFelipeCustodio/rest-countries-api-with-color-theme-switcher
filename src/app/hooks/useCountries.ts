@@ -12,11 +12,13 @@ function useCountries() {
     const { region, query, setQuery, countriesLimit, setCountriesLimit } =
         useFilterContext();
     const [countries, setCountries] = useState<null | TCountries>(null);
-    const fields = ['name', 'flags', 'capital', 'region', 'population'];
+    const fields = ['name', 'flags', 'capital', 'region', 'population', 'cca3'];
     const params = new URLSearchParams();
     const queryClient = useQueryClient();
 
     params.set('fields', fields.join(','));
+
+    useEffect(() => setCountries(null), [query, region]);
 
     const { isLoading, error, data } = useQuery({
         queryKey: ['countries', query, region, countriesLimit],

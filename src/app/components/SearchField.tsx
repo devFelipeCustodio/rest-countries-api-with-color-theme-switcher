@@ -39,9 +39,7 @@ function SearchField(props: AriaSearchFieldProps) {
     }, 800);
 
     useEffect(() => {
-        if (ref.current && query) {
-            state.setValue(query);
-        }
+        if (query) state.setValue(query);
     }, []);
 
     return (

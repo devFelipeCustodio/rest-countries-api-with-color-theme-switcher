@@ -6,10 +6,10 @@ function Button(
     props: PropsWithChildren &
         AriaButtonProps &
         React.HTMLProps<HTMLButtonElement> & {
-            buttonRef?: React.RefObject<HTMLButtonElement>;
+            buttonRef: React.RefObject<HTMLButtonElement>;
         }
 ) {
-    let ref = props.buttonRef || useRef(null);
+    let ref = props.buttonRef;
     let { buttonProps } = useButton(props, ref);
     return (
         <button
