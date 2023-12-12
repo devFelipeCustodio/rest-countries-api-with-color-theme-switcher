@@ -3,6 +3,7 @@
 
 .message_text {
     @include primary_box;
+    margin-top: $spacing-8;
     text-align: center;
     display: block;
 

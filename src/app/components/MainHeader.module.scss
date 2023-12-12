@@ -13,11 +13,11 @@
 
         h1,
         button {
-            padding: $spacing-3;
+            padding: $spacing-5;
         }
 
         h1 {
-            font-size: $fs-300;
+            font-size: $fs-400;
             letter-spacing: 0.1px;
             font-weight: map-get($font-weights, 'extra-bold');
         }

@@ -8,7 +8,7 @@ type TCountries = {
     total: number;
 };
 
-function useCountries() {
+function useSearch() {
     const { region, query, setQuery, countriesLimit, setCountriesLimit } =
         useFilterContext();
     const [countries, setCountries] = useState<null | TCountries>(null);
@@ -70,4 +70,4 @@ function useCountries() {
     return { isLoading, error, countries };
 }
 
-export default useCountries;
+export default useSearch;

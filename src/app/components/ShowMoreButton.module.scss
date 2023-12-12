@@ -2,6 +2,7 @@
 
 .load_more_btn {
     @include primary_button;
+    margin-top: $spacing-8;
     padding-inline: 3rem;
     margin-inline: auto;
 

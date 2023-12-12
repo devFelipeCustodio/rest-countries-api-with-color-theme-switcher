@@ -19,7 +19,6 @@ const Country = ({
     capital,
     cca3,
 }: CountryProps) => {
-    const pathname = usePathname();
     return (
         <div className={styles.country_container}>
             <img
@@ -27,7 +26,7 @@ const Country = ({
                 alt={`${name.common}'s flag`}
             />
             <div className={styles.body}>
-                <Link href={`${pathname}/${cca3.toLowerCase()}`}>{name.common}</Link>
+                <Link href={`${cca3.toLowerCase()}`}>{name.common}</Link>
                 <div className={styles.info}>
                     {population !== null && population !== undefined && (
                         <p>

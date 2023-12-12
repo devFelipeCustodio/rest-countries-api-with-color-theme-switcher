@@ -1,11 +1,11 @@
 import { CountryLimitActionKind } from '../context/FilterContext';
-import useCountries from '../hooks/useCountries';
+import useSearch from '../hooks/useSearch';
 import useFilterContext from '../hooks/useFilterContext';
 import styles from './ShowMoreButton.module.scss';
 
 export const ShowMoreButton = () => {
     const { setCountriesLimit } = useFilterContext();
-    const { isLoading } = useCountries();
+    const { isLoading } = useSearch();
     const handleClick = () => {
         setCountriesLimit({ type: CountryLimitActionKind.INCREASE });
     };
