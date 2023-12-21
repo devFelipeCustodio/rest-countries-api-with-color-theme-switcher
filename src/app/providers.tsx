@@ -7,10 +7,15 @@ const queryClient = new QueryClient();
 
 export function Providers({ children }: React.PropsWithChildren) {
     return (
-            <QueryClientProvider client={queryClient}>
-                <FilterContextProvider>
-                    <ThemeProvider attribute="class">{children}</ThemeProvider>
-                </FilterContextProvider>
-            </QueryClientProvider>
+        <QueryClientProvider client={queryClient}>
+            <FilterContextProvider>
+                <ThemeProvider
+                    defaultTheme="light"
+                    attribute="class"
+                >
+                    {children}
+                </ThemeProvider>
+            </FilterContextProvider>
+        </QueryClientProvider>
     );
 }
