@@ -4,22 +4,30 @@
 
 .main_header {
     @include box_shadow;
+    background-color: var(--bg-accent-color);
 
     nav {
-        background-color: var(--bg-accent-color);
         min-height: 5rem;
-
+        margin-inline: $spacing-5;
         @include justify_between;
 
-        h1,
-        button {
-            padding: $spacing-5;
+        @media screen and (min-width: 667px) {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        @media screen and (min-width: 1200px) {
+            max-width: 1200px;
         }
 
         h1 {
             font-size: $fs-400;
             letter-spacing: 0.1px;
             font-weight: map-get($font-weights, 'extra-bold');
+
+            @media screen and (min-width: 667px) {
+                font-size: $fs-700;
+            }
         }
 
         button {
@@ -29,6 +37,9 @@
             gap: 0.5rem;
             cursor: pointer;
             text-align: right;
+            @media screen and (min-width: 667px) {
+                font-size: $fs-350;
+            }
         }
 
         svg {

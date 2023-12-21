@@ -26,6 +26,8 @@ const Page = () => {
                             <CountrySkeleton />
                             <CountrySkeleton />
                             <CountrySkeleton />
+                            <CountrySkeleton />
+                            <CountrySkeleton />
                         </CountryList>
                     </>
                 ) : (

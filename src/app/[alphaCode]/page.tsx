@@ -18,9 +18,21 @@ type TCountry = {
     cca3: string;
 };
 
-const CountryPage = async ({ params }: { params: { alphaCode: string } }) => {
-    let country: TCountry;
+let country: TCountry;
 
+export async function generateMetadata({
+    params,
+}: {
+    params: { alphaCode: string };
+}) {
+    return {
+        title:
+            country?.name?.common ||
+            params.alphaCode.toUpperCase(),
+    };
+}
+
+const CountryPage = async ({ params }: { params: { alphaCode: string } }) => {
     const alphaCode = params.alphaCode;
 
     try {
@@ -67,74 +79,80 @@ const CountryPage = async ({ params }: { params: { alphaCode: string } }) => {
                     src={country.flags.svg}
                     alt={`${country.name.common}'s flag`}
                 />
-                <h2>{country.name.common}</h2>
-                <div className={styles.top_data}>
-                    <p>
-                        <span>Native Name: </span>
-                        {country.altSpellings[1]}
-                    </p>
-                    {country.population !== null &&
-                        country.population !== undefined && (
+                <div className={styles.data_container}>
+                    <h2>{country.name.common}</h2>
+                    <div className={styles.data}>
+                        <div className={styles.core_data}>
                             <p>
-                                <span>Population: </span>
-                                {country.population.toLocaleString('en-US')}
+                                <span>Native Name: </span>
+                                {country.altSpellings[1]}
                             </p>
-                        )}
-                    <p>
-                        <span>Region: </span>
-                        {country.region}
-                    </p>
-                    <p>
-                        <span>Sub Region: </span>
-                        {country.subregion}
-                    </p>
-                    {country.capital && (
-                        <p>
-                            <span>Capital: </span>
-                            {country.capital}
-                        </p>
-                    )}
-                </div>
-                <div className={styles.bottom_data}>
-                    <p>
-                        <span>Top Level Domain: </span>
-                        {country.tld.join(', ')}
-                    </p>
-                    <p>
-                        <span>Currencies: </span>
-                        {Object.keys(country.currencies)
-                            .map(
-                                (c) =>
-                                    country.currencies[
-                                        c
-                                    ].name[0].toUpperCase() +
-                                    country.currencies[c].name.slice(1)
-                            )
-                            .join(', ')}
-                    </p>
-                    <p>
-                        <span>Languages: </span>
-                        {Object.keys(country.languages)
-                            .map((l) => country.languages[l])
-                            .join(', ')}
-                    </p>
-                </div>
-
-                {country.borders.length > 0 && (
-                    <div className={styles.border_countries}>
-                        <h3>Border Countries:</h3>
-                        <div>
-                            {country.borders.map((c) => (
-                                <Link
-                                    key={c}
-                                    href={c.toLowerCase()}
-                                >
-                                    {c}
-                                </Link>
-                            ))}
+                            {country.population !== null &&
+                                country.population !== undefined && (
+                                    <p>
+                                        <span>Population: </span>
+                                        {country.population.toLocaleString(
+                                            'en-US'
+                                        )}
+                                    </p>
+                                )}
+                            <p>
+                                <span>Region: </span>
+                                {country.region}
+                            </p>
+                            <p>
+                                <span>Sub Region: </span>
+                                {country.subregion}
+                            </p>
+                            {country.capital && (
+                                <p>
+                                    <span>Capital: </span>
+                                    {country.capital}
+                                </p>
+                            )}
+                        </div>
+                        <div className={styles.extra_data}>
+                            <p>
+                                <span>Top Level Domain: </span>
+                                {country.tld.join(', ')}
+                            </p>
+                            <p>
+                                <span>Currencies: </span>
+                                {Object.keys(country.currencies)
+                                    .map(
+                                        (c) =>
+                                            country.currencies[
+                                                c
+                                            ].name[0].toUpperCase() +
+                                            country.currencies[c].name.slice(1)
+                                    )
+                                    .join(', ')}
+                            </p>
+                            <p>
+                                <span>Languages: </span>
+                                {Object.keys(country.languages)
+                                    .map((l) => country.languages[l])
+                                    .join(', ')}
+                            </p>
                         </div>
                     </div>
-                )}
+
+                    {country.borders.length > 0 && (
+                        <div className={styles.border_countries}>
+                            <h3>Border Countries:</h3>
+                            <div>
+                                {country.borders.map((c) => (
+                                    <Link
+                                        key={c}
+                                        href={c.toLowerCase()}
+                                    >
+                                        {c}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

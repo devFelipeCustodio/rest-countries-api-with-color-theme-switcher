@@ -1,9 +1,12 @@
 @import '../sass/variablesAndMaps';
 
-.countries_container {
+.countries_list {
     margin-top: $spacing-8;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 16rem);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: $spacing-9;
+    gap: 3.6rem;
+    @media screen and (min-width: 1200px) {
+        justify-content: start;
+    }
 }

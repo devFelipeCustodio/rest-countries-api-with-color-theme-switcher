@@ -7,7 +7,8 @@ import styles from './ScrollerButton.module.scss';
 const ScrollerButton = () => {
     const hasScrolledPast = useHasScrolledPast(500);
     const handleClick = () => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     };
 
     return (

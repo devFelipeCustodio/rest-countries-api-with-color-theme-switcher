@@ -1,0 +1,10 @@
+@import '../sass//variablesAndMaps';
+
+.actions {
+    @media screen and (min-width: 667px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-block: $spacing-9;
+    }
+}

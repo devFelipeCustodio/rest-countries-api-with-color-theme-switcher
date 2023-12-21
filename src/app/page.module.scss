@@ -4,4 +4,13 @@
     margin-inline: $spacing-3;
     margin-block: $spacing-8 $spacing-10;
     position: relative;
+
+    @media screen and (min-width: 667px) {
+        margin-inline: auto;
+        max-width: 650px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        max-width: 1200px;
+    }
 }

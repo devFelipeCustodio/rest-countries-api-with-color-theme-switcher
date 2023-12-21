@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Item } from 'react-stately';
 import { CountryLimitActionKind } from '../context/FilterContext';
 import SearchField from './SearchField';
+import styles from './ActionsForm.module.scss';
 
 const ActionsForm = () => {
     const router = useRouter();
@@ -36,7 +37,7 @@ const ActionsForm = () => {
     useEffect(() => {
         if (!query && !region && !countriesLimit) return;
         setSearchParams();
-    }, [query, region, countriesLimit]);
+    }, [query, region, countriesLimit, setSearchParams]);
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -44,7 +45,10 @@ const ActionsForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form
+            onSubmit={handleSubmit}
+            className={styles.actions}
+        >
             <SearchField aria-label="Country search" />
             <Select
                 onSelectionChange={() =>

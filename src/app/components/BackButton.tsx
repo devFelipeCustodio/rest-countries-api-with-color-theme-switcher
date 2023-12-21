@@ -6,6 +6,7 @@ import ArrowLeft from './icons/ArrowLeft';
 const BackButton = () => {
     return (
         <button
+            type="button"
             className={styles.back_button}
             onClick={() => history.back()}
         >

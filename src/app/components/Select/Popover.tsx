@@ -1,7 +1,5 @@
 import { useRef } from 'react';
-// @ts-ignore
 import { DismissButton, Overlay, usePopover } from 'react-aria';
-// @ts-ignore
 import type { AriaPopoverProps } from 'react-aria';
 import type { OverlayTriggerState } from 'react-stately';
 

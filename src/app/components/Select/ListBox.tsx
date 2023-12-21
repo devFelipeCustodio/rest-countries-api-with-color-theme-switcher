@@ -1,7 +1,6 @@
 import { AriaListBoxOptions, useListBox, useOption } from '@react-aria/listbox';
 import { useRef } from 'react';
 import { ListState, Node } from 'react-stately';
-import { CountryProps } from '../Country';
 import styles from './ListBox.module.scss';
 
 function ListBox(
@@ -39,7 +38,7 @@ function Option({
     state: ListState<HTMLUListElement>;
 }) {
     let ref = useRef(null);
-    let { optionProps, isSelected, isFocused, isDisabled } = useOption(
+    let { optionProps } = useOption(
         { key: item.key },
         state,
         ref

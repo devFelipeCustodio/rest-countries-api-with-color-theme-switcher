@@ -10,7 +10,6 @@ import Button from './Button';
 import Popover from './Popover';
 import ListBox from './ListBox';
 import ChevronDown from '../icons/ChevronDown';
-import { CountryLimitActionKind } from '../../context/FilterContext';
 
 const Select = (
     props: PropsWithChildren &
@@ -20,7 +19,7 @@ const Select = (
     const listBoxRef = useRef<HTMLUListElement>(null);
     let state = useSelectState<HTMLUListElement>(props);
     let ref = useRef<HTMLButtonElement>(null);
-    let { labelProps, triggerProps, valueProps, menuProps } = useSelect(
+    let { triggerProps, valueProps, menuProps } = useSelect(
         props,
         state,
         ref
@@ -35,11 +34,10 @@ const Select = (
                 state.setSelectedKey(null);
             }
         }
-    }, [state]);
+    }, [setRegion, state]);
 
     return (
-        <div>
-            <div {...labelProps}>{props.label}</div>
+        <>
             <HiddenSelect
                 isDisabled={props.isDisabled}
                 state={state}
@@ -76,7 +74,7 @@ const Select = (
                     />
                 </Popover>
             )}
-        </div>
+        </>
     );
 };
 

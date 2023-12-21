@@ -1,4 +1,4 @@
-import { Children, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import Country, { CountryProps } from './Country';
 import styles from './CountryList.module.scss';
 import LoadMoreButton from './ShowMoreButton';
@@ -13,17 +13,14 @@ const CountryList = ({
 } & PropsWithChildren) => {
     return (
         <>
-            <ul>
-                <li className={styles.countries_container}>
-                    {countries &&
-                        countries.map((country, i) => (
-                            <Country
-                                key={i}
-                                {...country}
-                            />
-                        ))}
-                    {children}
-                </li>
+            <ul className={styles.countries_list}>
+                {countries &&
+                    countries.map((country, i) => (
+                        <li key={i}>
+                            <Country {...country} />
+                        </li>
+                    ))}
+                {children}
             </ul>
             {remaining > 0 && <LoadMoreButton />}
         </>

@@ -2,11 +2,15 @@
 @import '../../sass/_mixins';
 
 .btn {
+    @include primary_button;
     padding-inline: 1.5rem;
+    padding-block: 1.1rem;
     min-width: 13rem;
-    max-width: 13rem;
     display: flex;
     gap: 1rem;
     margin-top: $spacing-8;
-    @include primary_button;
+
+    @media screen and (min-width: 667px) {
+        margin-top: 0;
+    }
 }

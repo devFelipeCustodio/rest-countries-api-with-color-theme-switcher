@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import styles from './Country.module.scss';
-import { usePathname } from 'next/navigation';
 
 export type CountryProps = {
     name: { common: string };

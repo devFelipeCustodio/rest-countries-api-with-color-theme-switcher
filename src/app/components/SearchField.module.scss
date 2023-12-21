@@ -2,7 +2,7 @@
 @import '../sass/variablesAndMaps';
 
 .searchbar_container {
-    $height: 1.8rem;
+    $height: 2.2rem;
     $icon_container_width: 2.3rem;
     $clear_button_width: 2rem;
     background-color: var(--bg-accent-color);
@@ -11,6 +11,10 @@
     display: flex;
     @include box_shadow;
     @include border_radius;
+
+    @media screen and (min-width: 667px) {
+        min-width: 38%;
+    }
 
     svg {
         fill: var(--icon-faded-color);

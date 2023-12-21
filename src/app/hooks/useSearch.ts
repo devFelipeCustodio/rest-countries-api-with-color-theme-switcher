@@ -1,4 +1,4 @@
-import { useEffect, useState, useTransition } from 'react';
+import { useEffect, useState } from 'react';
 import { CountryProps } from '../components/Country';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import useFilterContext from './useFilterContext';
@@ -9,7 +9,7 @@ type TCountries = {
 };
 
 function useSearch() {
-    const { region, query, setQuery, countriesLimit, setCountriesLimit } =
+    const { region, query, countriesLimit } =
         useFilterContext();
     const [countries, setCountries] = useState<null | TCountries>(null);
     const fields = ['name', 'flags', 'capital', 'region', 'population', 'cca3'];

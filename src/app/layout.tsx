@@ -9,7 +9,12 @@ import MainHeader from './components/MainHeader';
 const nunitoSans = Nunito_Sans({ subsets: ['latin'], weight: 'variable' });
 
 export const metadata: Metadata = {
-    title: 'Frontend Mentor | REST Countries API with color theme switcher',
+    title: {
+        template:
+            '%s | Frontend Mentor | REST Countries API with color theme switcher',
+        default:
+            'Frontend Mentor | REST Countries API with color theme switcher', // a default is required when creating a template
+    },
 };
 export default function RootLayout({
     children,

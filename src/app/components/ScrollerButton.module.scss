@@ -2,7 +2,7 @@
 @import '../sass/mixins';
 
 .Scroller {
-    min-width: 44px; 
+    min-width: 44px;
     padding: 10px;
     aspect-ratio: 1;
     border-radius: 100vw;
@@ -19,5 +19,11 @@
 
     &:active {
         appearance: none;
+    }
+
+    @media screen and (min-width: 667px) {
+        min-width: 56px;
+        padding: 15px;
+        right: $spacing-8;
     }
 }
