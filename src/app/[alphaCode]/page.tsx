@@ -18,7 +18,6 @@ type TCountry = {
     cca3: string;
 };
 
-let country: TCountry;
 
 export async function generateMetadata({
     params,
@@ -26,14 +25,14 @@ export async function generateMetadata({
     params: { alphaCode: string };
 }) {
     return {
-        title:
-            country?.name?.common ||
-            params.alphaCode.toUpperCase(),
+        title: params.alphaCode.toUpperCase(),
     };
 }
 
 const CountryPage = async ({ params }: { params: { alphaCode: string } }) => {
     const alphaCode = params.alphaCode;
+
+    let country: TCountry;
 
     try {
         const FIELDS = [
